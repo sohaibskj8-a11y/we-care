@@ -1,0 +1,2163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smile Care Dental Clinic — Demo Website</title>
+    <meta
+      name="description"
+      content="Demo website for Smile Care Dental Clinic — a fictional dental clinic showcase with services, dentist profiles, and an interactive demo appointment form."
+    />
+    <meta property="og:title" content="Smile Care Dental Clinic — Demo Website" />
+    <meta
+      property="og:description"
+      content="Demo website for Smile Care Dental Clinic — a fictional dental clinic showcase with services, dentist profiles, and an interactive demo appointment form."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..600;1,9..40,400..600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-white: #ffffff;
+        --bg-blue-tint: #f4f9fc;
+        --bg-green-tint: #f3faf6;
+        --bg-sky-notice: #f0f9ff;
+        --border-slate: #e2e8f0;
+        --border-slate-light: #f1f5f9;
+        --border-input: #cbd5e1;
+        --border-sky: #bae6fd;
+        --border-emerald: #a7f3d0;
+        --text-slate-900: #0f172a;
+        --text-slate-800: #1e293b;
+        --text-slate-700: #334155;
+        --text-slate-600: #475569;
+        --text-slate-500: #64748b;
+        --text-slate-400: #94a3b8;
+        --sky-600: #0284c7;
+        --sky-700: #0369a1;
+        --sky-800: #075985;
+        --sky-950: #082f49;
+        --emerald-700: #047857;
+        --emerald-800: #065f46;
+        --red-700: #b91c1c;
+        --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+        --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-family: var(--font-sans);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-white);
+        color: var(--text-slate-800);
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-display);
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      select {
+        font-family: inherit;
+      }
+
+      .container {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Demo Banner */
+      .demo-banner {
+        background-color: var(--bg-sky-notice);
+        border-bottom: 1px solid var(--border-sky);
+        color: var(--text-slate-800);
+        padding: 0.625rem 1rem;
+        text-align: center;
+        font-size: 0.8125rem;
+      }
+
+      .demo-banner-inner {
+        max-width: 72rem;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem 0.5rem;
+      }
+
+      .demo-banner strong {
+        color: var(--sky-950);
+        font-weight: 600;
+      }
+
+      .demo-banner-sub {
+        color: var(--text-slate-600);
+      }
+
+      /* Top Navigation Bar (3-Zone Contract) */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background-color: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--border-slate);
+      }
+
+      .header-inner {
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .brand-wordmark {
+        font-family: var(--font-display);
+        font-size: 1.0625rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        color: var(--text-slate-900);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: flex;
+        }
+      }
+
+      .nav-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-slate-600);
+        white-space: nowrap;
+        flex-shrink: 0;
+        text-underline-offset: 8px;
+        transition: color 150ms ease;
+      }
+
+      .nav-link:hover {
+        color: var(--sky-700);
+        text-decoration: underline;
+      }
+
+      .nav-link.active {
+        color: var(--sky-700);
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-decoration-color: var(--sky-600);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-shrink: 0;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5625rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #ffffff;
+        background-color: var(--sky-600);
+        border: none;
+        border-radius: 0.375rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: background-color 150ms ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--sky-700);
+      }
+
+      .btn-primary.is-active-page {
+        background-color: var(--emerald-700);
+      }
+
+      .btn-primary.is-active-page:hover {
+        background-color: var(--emerald-800);
+      }
+
+      .btn-primary-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+      }
+
+      .desktop-cta {
+        display: none;
+      }
+
+      @media (min-width: 640px) {
+        .desktop-cta {
+          display: inline-flex;
+        }
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: none;
+        background: transparent;
+        color: var(--text-slate-700);
+        border-radius: 0.375rem;
+        cursor: pointer;
+      }
+
+      .mobile-toggle:hover {
+        background-color: var(--border-slate-light);
+      }
+
+      @media (min-width: 768px) {
+        .mobile-toggle {
+          display: none;
+        }
+      }
+
+      .mobile-nav {
+        display: none;
+        background-color: var(--bg-white);
+        border-top: 1px solid var(--border-slate);
+        padding: 0.75rem 1rem 1rem;
+      }
+
+      .mobile-nav.open {
+        display: block;
+      }
+
+      @media (min-width: 768px) {
+        .mobile-nav {
+          display: none !important;
+        }
+      }
+
+      .mobile-nav-link {
+        display: block;
+        padding: 0.625rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-slate-700);
+        border-radius: 0.375rem;
+      }
+
+      .mobile-nav-link:hover,
+      .mobile-nav-link.active {
+        background-color: var(--bg-sky-notice);
+        color: var(--sky-700);
+      }
+
+      .mobile-nav-cta-wrap {
+        padding-top: 0.5rem;
+      }
+
+      .mobile-nav-cta {
+        width: 100%;
+        padding: 0.6875rem 1rem;
+      }
+
+      /* Main Content & Page Switching */
+      main {
+        flex: 1;
+      }
+
+      .page-view {
+        display: none;
+      }
+
+      .page-view.active {
+        display: block;
+      }
+
+      /* Subpage Header Band */
+      .page-band {
+        border-bottom: 1px solid var(--border-slate);
+        padding: 2.5rem 0;
+      }
+
+      @media (min-width: 640px) {
+        .page-band {
+          padding: 3rem 0;
+        }
+      }
+
+      .page-band-blue {
+        background-color: var(--bg-blue-tint);
+      }
+
+      .page-band-green {
+        background-color: var(--bg-green-tint);
+      }
+
+      .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .eyebrow-sky {
+        color: var(--sky-700);
+      }
+
+      .eyebrow-emerald {
+        color: var(--emerald-700);
+      }
+
+      .page-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-slate-900);
+        line-height: 1.2;
+        max-width: 42rem;
+        text-wrap: balance;
+      }
+
+      @media (min-width: 640px) {
+        .page-title {
+          font-size: 2.25rem;
+        }
+      }
+
+      .page-subtitle {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        color: var(--text-slate-600);
+        line-height: 1.6;
+        max-width: 42rem;
+      }
+
+      .section-pad {
+        padding: 3rem 0;
+      }
+
+      @media (min-width: 640px) {
+        .section-pad {
+          padding: 4rem 0;
+        }
+      }
+
+      /* Hero / Home Page */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: stretch;
+      }
+
+      @media (min-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+        }
+      }
+
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero-tagline {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--emerald-700);
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-headline {
+        font-size: 1.875rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        color: var(--text-slate-900);
+        line-height: 1.15;
+        text-wrap: balance;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .hero-headline {
+          font-size: 2.375rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-headline {
+          font-size: 2.625rem;
+        }
+      }
+
+      .hero-desc {
+        font-size: 1.0625rem;
+        color: var(--text-slate-600);
+        line-height: 1.65;
+        max-width: 36rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-meta {
+        font-size: 0.75rem;
+        color: var(--text-slate-500);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .text-link-btn {
+        background: none;
+        border: none;
+        padding: 0.5rem 0.25rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--sky-700);
+        cursor: pointer;
+        text-underline-offset: 4px;
+      }
+
+      .text-link-btn:hover {
+        color: var(--sky-800);
+        text-decoration: underline;
+      }
+
+      .text-link-emerald {
+        color: var(--emerald-700);
+      }
+
+      .text-link-emerald:hover {
+        color: var(--emerald-800);
+      }
+
+      .hero-image-frame {
+        border: 1px solid var(--border-slate);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #f8fafc;
+        min-height: 260px;
+        height: 100%;
+      }
+
+      @media (min-width: 640px) {
+        .hero-image-frame {
+          min-height: 320px;
+        }
+      }
+
+      .img-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .img-fallback {
+        display: none;
+        width: 100%;
+        height: 100%;
+        min-height: 220px;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 50%, #ecfdf5 100%);
+        color: var(--text-slate-600);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .highlights-row {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-slate);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .highlights-row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .highlight-card {
+        border-radius: 0.5rem;
+        padding: 1.25rem;
+      }
+
+      .highlight-blue {
+        background-color: var(--bg-blue-tint);
+        border: 1px solid #e0f2fe;
+      }
+
+      .highlight-green {
+        background-color: var(--bg-green-tint);
+        border: 1px solid #d1fae5;
+      }
+
+      .highlight-card h2 {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text-slate-900);
+        margin-bottom: 0.25rem;
+      }
+
+      .highlight-card p {
+        font-size: 0.875rem;
+        color: var(--text-slate-600);
+        line-height: 1.55;
+      }
+
+      .explore-band {
+        background-color: var(--bg-blue-tint);
+        border-top: 1px solid var(--border-slate);
+        padding: 3rem 0;
+      }
+
+      .explore-heading {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--text-slate-900);
+        margin-bottom: 0.375rem;
+      }
+
+      .explore-sub {
+        font-size: 0.9375rem;
+        color: var(--text-slate-600);
+        margin-bottom: 2rem;
+      }
+
+      /* Grids & Cards */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 1024px) {
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .card {
+        background-color: var(--bg-white);
+        border: 1px solid var(--border-slate);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-title {
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--text-slate-900);
+        margin-bottom: 0.5rem;
+      }
+
+      .card-text {
+        font-size: 0.875rem;
+        color: var(--text-slate-600);
+        line-height: 1.6;
+      }
+
+      .card-footer {
+        margin-top: 1.25rem;
+        padding-top: 0.875rem;
+        border-top: 1px solid var(--border-slate-light);
+      }
+
+      /* About Page */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .about-grid {
+          grid-template-columns: 5fr 7fr;
+          gap: 3rem;
+        }
+      }
+
+      .about-photo {
+        border: 1px solid var(--border-slate);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background-color: #f8fafc;
+      }
+
+      .section-h2 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--text-slate-900);
+        margin-bottom: 1rem;
+      }
+
+      .prose-p {
+        font-size: 1rem;
+        color: var(--text-slate-600);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      .team-summary-box {
+        background-color: var(--bg-blue-tint);
+        border: 1px solid #e0f2fe;
+        border-radius: 0.5rem;
+        padding: 1.25rem;
+        margin-top: 1.5rem;
+      }
+
+      .team-summary-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.75rem 0 0;
+        display: grid;
+        gap: 0.625rem;
+        font-size: 0.875rem;
+        color: var(--text-slate-600);
+      }
+
+      .values-divider {
+        margin-top: 3rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid var(--border-slate);
+      }
+
+      /* Services Page */
+      .service-meta {
+        font-size: 0.75rem;
+        color: var(--text-slate-500);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .service-cta-band {
+        margin-top: 3rem;
+        background-color: var(--bg-blue-tint);
+        border: 1px solid #e0f2fe;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 768px) {
+        .service-cta-band {
+          padding: 2rem;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      /* Team Page */
+      .team-card {
+        background-color: var(--bg-white);
+        border: 1px solid var(--border-slate);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .team-photo-box {
+        aspect-ratio: 1 / 1;
+        background-color: #f1f5f9;
+        border-bottom: 1px solid var(--border-slate);
+        overflow: hidden;
+      }
+
+      .team-photo-box img {
+        object-position: top;
+      }
+
+      .team-body {
+        padding: 1.5rem;
+      }
+
+      .team-kicker {
+        font-size: 0.75rem;
+        color: var(--text-slate-500);
+        margin-bottom: 0.375rem;
+      }
+
+      .team-role {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--sky-700);
+        margin-bottom: 0.5rem;
+      }
+
+      .team-qual {
+        font-size: 0.75rem;
+        color: var(--text-slate-500);
+        margin-bottom: 0.75rem;
+      }
+
+      .team-footer {
+        padding: 0.75rem 1.5rem 1.25rem;
+        border-top: 1px solid var(--border-slate-light);
+      }
+
+      /* Appointment Page */
+      .appointment-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      @media (min-width: 1024px) {
+        .appointment-grid {
+          grid-template-columns: 8fr 4fr;
+        }
+      }
+
+      .notice-box {
+        background-color: var(--bg-sky-notice);
+        border: 1px solid var(--border-sky);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        color: var(--text-slate-700);
+        line-height: 1.55;
+      }
+
+      .form-card {
+        background-color: var(--bg-white);
+        border: 1px solid var(--border-slate);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .form-card {
+          padding: 2rem;
+        }
+      }
+
+      .form-stack {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .form-row-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 640px) {
+        .form-row-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-slate-800);
+        margin-bottom: 0.375rem;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.625rem 0.875rem;
+        font-size: 0.875rem;
+        color: var(--text-slate-900);
+        background-color: var(--bg-white);
+        border: 1px solid var(--border-input);
+        border-radius: 0.375rem;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--sky-600);
+        box-shadow: 0 0 0 1px var(--sky-600);
+      }
+
+      .field-error {
+        display: none;
+        margin-top: 0.375rem;
+        font-size: 0.75rem;
+        color: var(--red-700);
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      .field-error.visible {
+        display: flex;
+      }
+
+      .form-submit-row {
+        padding-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .confirmation-box {
+        display: none;
+        background-color: var(--bg-green-tint);
+        border: 1px solid var(--border-emerald);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .confirmation-box {
+          padding: 2rem;
+        }
+      }
+
+      .confirmation-box.visible {
+        display: block;
+      }
+
+      .summary-dl {
+        background-color: var(--bg-white);
+        border: 1px solid var(--border-slate);
+        border-radius: 0.375rem;
+        margin: 1.25rem 0 1.5rem;
+        font-size: 0.875rem;
+      }
+
+      .summary-row {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-slate-light);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .summary-row:last-child {
+        border-bottom: none;
+      }
+
+      @media (min-width: 640px) {
+        .summary-row {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      .summary-dt {
+        color: var(--text-slate-500);
+      }
+
+      .summary-dd {
+        margin: 0;
+        font-weight: 500;
+        color: var(--text-slate-900);
+      }
+
+      .hours-sidebar {
+        background-color: var(--bg-green-tint);
+        border: 1px solid var(--border-emerald);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+      }
+
+      .hours-list {
+        margin: 0.75rem 0 0;
+        font-size: 0.875rem;
+      }
+
+      .hours-item {
+        padding: 0.625rem 0;
+        border-bottom: 1px solid rgba(167, 243, 208, 0.7);
+      }
+
+      .hours-item:last-child {
+        border-bottom: none;
+      }
+
+      /* Contact Page */
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      .hours-table-row {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-slate-light);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+      }
+
+      .hours-table-row:last-child {
+        border-bottom: none;
+      }
+
+      @media (min-width: 640px) {
+        .hours-table-row {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      /* Footer */
+      .site-footer {
+        background-color: var(--bg-white);
+        border-top: 1px solid var(--border-slate);
+        padding: 2.5rem 0;
+      }
+
+      .footer-top {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-slate-light);
+      }
+
+      @media (min-width: 768px) {
+        .footer-top {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        font-size: 0.875rem;
+      }
+
+      .footer-link {
+        color: var(--text-slate-600);
+        text-underline-offset: 4px;
+      }
+
+      .footer-link:hover {
+        color: var(--sky-700);
+        text-decoration: underline;
+      }
+
+      .footer-link.active {
+        font-weight: 600;
+        color: var(--sky-700);
+      }
+
+      .footer-bottom {
+        padding-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--text-slate-500);
+      }
+
+      @media (min-width: 640px) {
+        .footer-bottom {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--sky-600);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Clear Demo Website Banner -->
+    <div class="demo-banner" role="note" aria-label="Demonstration notice">
+      <div class="demo-banner-inner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 16v-4"></path>
+          <path d="M12 8h.01"></path>
+        </svg>
+        <strong>DEMO WEBSITE — NOT A REAL CLINIC.</strong>
+        <span class="demo-banner-sub">
+          All clinic details, dentist profiles, and appointment forms are fictional demo content.
+        </span>
+      </div>
+    </div>
+
+    <!-- Clean 3-Zone Header Navigation -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#home" class="brand-wordmark" data-page-link="home">
+          Smile Care Dental Clinic
+        </a>
+
+        <nav aria-label="Main navigation" class="desktop-nav">
+          <a href="#home" class="nav-link active" data-page-link="home" aria-current="page">Home</a>
+          <a href="#about" class="nav-link" data-page-link="about">About Us</a>
+          <a href="#services" class="nav-link" data-page-link="services">Services</a>
+          <a href="#team" class="nav-link" data-page-link="team">Our Team</a>
+          <a href="#contact" class="nav-link" data-page-link="contact">Contact Us</a>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" id="header-book-btn" class="btn-primary desktop-cta" data-page-link="appointment">
+            Book Appointment
+          </button>
+
+          <button
+            type="button"
+            id="mobile-menu-toggle"
+            class="mobile-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
+            aria-label="Open navigation menu"
+          >
+            <svg id="icon-menu-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+            <svg id="icon-menu-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;" aria-hidden="true">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobile-navigation" aria-label="Mobile navigation" class="mobile-nav">
+        <a href="#home" class="mobile-nav-link active" data-page-link="home">Home</a>
+        <a href="#about" class="mobile-nav-link" data-page-link="about">About Us</a>
+        <a href="#services" class="mobile-nav-link" data-page-link="services">Services</a>
+        <a href="#team" class="mobile-nav-link" data-page-link="team">Our Team</a>
+        <a href="#contact" class="mobile-nav-link" data-page-link="contact">Contact Us</a>
+        <div class="mobile-nav-cta-wrap">
+          <button type="button" class="btn-primary mobile-nav-cta" data-page-link="appointment">
+            Book Appointment
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- PAGE 1: HOME -->
+      <section id="page-home" class="page-view active" aria-label="Home page">
+        <div class="container section-pad">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="hero-tagline">Your Smile, Our Priority.</p>
+              <h1 class="hero-headline">Welcome to Smile Care Dental Clinic</h1>
+              <p class="hero-desc">
+                Friendly, straightforward dental care for individuals and families in a calm neighborhood setting. From routine checkups and gentle cleanings to braces and implants, we explain every step clearly before treatment begins.
+              </p>
+              <p class="hero-meta">
+                Fictional Demo Clinic · Clifton, Karachi · Demonstration Website Only
+              </p>
+              <div class="hero-actions">
+                <button type="button" class="btn-primary btn-primary-lg" data-page-link="appointment">
+                  Book an Appointment
+                </button>
+                <button type="button" class="text-link-btn" data-page-link="services">
+                  View Our Services
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <div class="hero-image-frame">
+                <img
+                  src="./src/assets/images/hero_dental_clinic_1795678336155.jpg"
+                  alt="Bright and clean treatment room inside Smile Care Dental Clinic with light blue cabinetry and natural sunlight"
+                  referrerpolicy="no-referrer"
+                  class="img-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="img-fallback">Smile Care Dental Clinic Interior (Demo Image)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlights-row">
+            <div class="highlight-card highlight-blue">
+              <h2>Gentle Family Care</h2>
+              <p>Calm, unhurried appointments tailored for children, adults, and seniors.</p>
+            </div>
+            <div class="highlight-card highlight-green">
+              <h2>Clear Treatment Guidance</h2>
+              <p>Simple explanations and transparent care options before any procedure.</p>
+            </div>
+            <div class="highlight-card highlight-blue">
+              <h2>Convenient Karachi Hours</h2>
+              <p>Open Monday through Saturday with simple demo appointment requests online.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="explore-band">
+          <div class="container">
+            <h2 class="explore-heading">Explore Our Clinic Pages</h2>
+            <p class="explore-sub">
+              Use the navigation bar above or the links below to browse each page of this demo clinic website.
+            </p>
+            <div class="grid-3">
+              <div class="card">
+                <div>
+                  <h3 class="card-title">About Us</h3>
+                  <p class="card-text">
+                    Learn about our fictional neighborhood practice philosophy, patient comfort focus, and clinic overview.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-page-link="about">
+                    Open About Us page
+                  </button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div>
+                  <h3 class="card-title">Our Services</h3>
+                  <p class="card-text">
+                    Browse teeth cleaning, whitening, implants, braces, root canal treatment, and routine dental checkups.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-page-link="services">
+                    Open Our Services page
+                  </button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div>
+                  <h3 class="card-title">Our Team &amp; Contact</h3>
+                  <p class="card-text">
+                    Meet our three fictional demo dentists or view sample Karachi clinic hours and contact information.
+                  </p>
+                </div>
+                <div class="card-footer" style="display:flex; align-items:center; gap:0.875rem;">
+                  <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="team">
+                    Our Team
+                  </button>
+                  <span aria-hidden="true" style="color:#cbd5e1;">|</span>
+                  <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-page-link="contact">
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2: ABOUT US -->
+      <section id="page-about" class="page-view" aria-label="About Us page">
+        <div class="page-band page-band-blue">
+          <div class="container">
+            <p class="eyebrow eyebrow-sky">About Us · Fictional Demo Clinic</p>
+            <h1 class="page-title">Friendly, Everyday Dental Care Built Around Patient Comfort</h1>
+          </div>
+        </div>
+
+        <div class="container section-pad">
+          <div class="about-grid">
+            <div class="about-photo">
+              <img
+                src="./src/assets/images/about_dental_care_1795678336416.jpg"
+                alt="Dentist discussing a treatment plan with a smiling patient in a bright dental office"
+                referrerpolicy="no-referrer"
+                class="img-cover"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="img-fallback">Patient Consultation (Demo Image)</div>
+            </div>
+
+            <div>
+              <h2 class="section-h2">Our Fictional Clinic Story</h2>
+              <p class="prose-p">
+                Smile Care Dental Clinic is a fictional neighborhood dental practice designed to demonstrate how a welcoming clinic website works. Our goal in this demo is to show a warm, approachable atmosphere where patients know what to expect from the moment they walk in.
+              </p>
+              <p class="prose-p">
+                Our sample team brings together preventive dentistry, restorative care, and orthodontics under one roof so families can manage regular checkups and specialized treatments in one familiar place.
+              </p>
+
+              <div class="team-summary-box">
+                <h3 style="font-size:0.875rem; font-weight:600; color:var(--text-slate-900);">
+                  Sample Dentist Profiles (Fictional Demo Team)
+                </h3>
+                <ul class="team-summary-list">
+                  <li>
+                    <strong style="color:var(--text-slate-900);">Dr. Ayesha Siddiqui</strong>
+                    <span aria-hidden="true"> · </span>
+                    <span>General &amp; Preventive Dentist</span>
+                  </li>
+                  <li>
+                    <strong style="color:var(--text-slate-900);">Dr. Kamran Qureshi</strong>
+                    <span aria-hidden="true"> · </span>
+                    <span>Restorative &amp; Implant Dentist</span>
+                  </li>
+                  <li>
+                    <strong style="color:var(--text-slate-900);">Dr. Sana Tariq</strong>
+                    <span aria-hidden="true"> · </span>
+                    <span>Orthodontist &amp; Cosmetic Care</span>
+                  </li>
+                </ul>
+                <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid #bae6fd; display:flex; flex-wrap:wrap; gap:1.25rem;">
+                  <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="team">
+                    View full Team page
+                  </button>
+                  <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-page-link="appointment">
+                    Book a demo visit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="values-divider grid-3">
+            <div class="card">
+              <h3 class="card-title">Calm, Unhurried Appointments</h3>
+              <p class="card-text">
+                Every demo visit is paced so patients can ask questions comfortably without feeling rushed.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Honest, Plain-Language Advice</h3>
+              <p class="card-text">
+                Treatment options, timelines, and preventive tips are explained clearly without confusing jargon.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Clean &amp; Organized Environment</h3>
+              <p class="card-text">
+                Designed around bright daylight, tidy treatment rooms, and patient peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 3: OUR SERVICES -->
+      <section id="page-services" class="page-view" aria-label="Our Services page">
+        <div class="page-band page-band-green">
+          <div class="container">
+            <p class="eyebrow eyebrow-emerald">Our Services · Demo Treatment Menu</p>
+            <h1 class="page-title">Dental Services for Every Stage of Care</h1>
+            <p class="page-subtitle">
+              Explore our six core demo treatments below. Select any service to open the Appointment page with that treatment pre-selected.
+            </p>
+          </div>
+        </div>
+
+        <div class="container section-pad">
+          <div class="grid-3">
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--sky-700); font-weight:500;">Preventive Care</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="tabular-nums">30–45 mins</span>
+                </div>
+                <h2 class="card-title">Teeth Cleaning</h2>
+                <p class="card-text">
+                  Gentle ultrasonic scaling and polishing to remove plaque, tartar, and surface stains while keeping your gums healthy and fresh.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Teeth Cleaning">
+                  Book Teeth Cleaning
+                </button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--emerald-700); font-weight:500;">Cosmetic Care</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="tabular-nums">45–60 mins</span>
+                </div>
+                <h2 class="card-title">Teeth Whitening</h2>
+                <p class="card-text">
+                  Safe, dentist-supervised brightening treatments designed to reduce everyday discoloration from tea, coffee, and natural aging.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Teeth Whitening">
+                  Book Teeth Whitening
+                </button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--sky-700); font-weight:500;">Restorative Care</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Consultation + Staged Visits</span>
+                </div>
+                <h2 class="card-title">Dental Implants</h2>
+                <p class="card-text">
+                  Natural-looking tooth replacement options anchored securely to restore comfortable chewing and a balanced smile.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Dental Implants">
+                  Book Dental Implants
+                </button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--emerald-700); font-weight:500;">Orthodontics</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Personalized Plan</span>
+                </div>
+                <h2 class="card-title">Braces Treatment</h2>
+                <p class="card-text">
+                  Traditional metal, ceramic, and clear alignment solutions for teenagers and adults looking to straighten crowded or spaced teeth.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Braces Treatment">
+                  Book Braces Treatment
+                </button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--sky-700); font-weight:500;">Endodontic Care</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="tabular-nums">60–90 mins</span>
+                </div>
+                <h2 class="card-title">Root Canal Treatment</h2>
+                <p class="card-text">
+                  Calm, comfort-focused therapy to relieve toothache, treat deep infection, and save your natural tooth structure.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Root Canal Treatment">
+                  Book Root Canal Treatment
+                </button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div>
+                <div class="service-meta">
+                  <span style="color:var(--emerald-700); font-weight:500;">Routine Exam</span>
+                  <span aria-hidden="true">·</span>
+                  <span class="tabular-nums">20–30 mins</span>
+                </div>
+                <h2 class="card-title">Dental Checkups</h2>
+                <p class="card-text">
+                  Thorough oral examinations, digital checkups when needed, and clear treatment guidance for children, adults, and seniors.
+                </p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-book-service="Dental Checkups">
+                  Book Dental Checkups
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="service-cta-band">
+            <div style="max-width:36rem;">
+              <h2 class="card-title">Not sure which service to choose?</h2>
+              <p class="card-text">
+                You can request a routine Dental Checkup on our demo Appointment page, or review our fictional Karachi clinic hours on the Contact Us page.
+              </p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem; flex-shrink:0;">
+              <button type="button" class="btn-primary" data-book-service="Dental Checkups">
+                Book Demo Checkup
+              </button>
+              <button type="button" class="text-link-btn" style="font-size:0.875rem;" data-page-link="contact">
+                View Clinic Hours
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 4: OUR TEAM -->
+      <section id="page-team" class="page-view" aria-label="Our Team page">
+        <div class="page-band page-band-green">
+          <div class="container">
+            <p class="eyebrow eyebrow-emerald">Our Team · Fictional Demo Profiles Only</p>
+            <h1 class="page-title">Meet Our Fictional Dental Team</h1>
+            <p class="page-subtitle">
+              All dentist names, qualifications, and portraits shown on this page are fictional placeholder profiles created exclusively for this demo clinic website.
+            </p>
+          </div>
+        </div>
+
+        <div class="container section-pad">
+          <div class="grid-3">
+            <article class="team-card">
+              <div>
+                <div class="team-photo-box">
+                  <img
+                    src="./src/assets/images/dentist_ayesha_clean_1795678352122.jpg"
+                    alt="Portrait of fictional dentist Dr. Ayesha Siddiqui in a white clinical coat and light blue scrubs"
+                    referrerpolicy="no-referrer"
+                    class="img-cover"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="img-fallback">Dr. Ayesha Siddiqui (Demo Portrait)</div>
+                </div>
+                <div class="team-body">
+                  <p class="team-kicker">Fictional Demo Profile · 9 Years Demo Experience</p>
+                  <h2 class="card-title" style="margin-bottom:0.125rem;">Dr. Ayesha Siddiqui</h2>
+                  <p class="team-role">General &amp; Preventive Dentist</p>
+                  <p class="team-qual">BDS (Fictional Demo Credentials)</p>
+                  <p class="card-text">
+                    Focuses on routine dental checkups, gentle teeth cleaning, and helping nervous patients feel comfortable during every visit.
+                  </p>
+                </div>
+              </div>
+              <div class="team-footer">
+                <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="appointment">
+                  Request demo appointment
+                </button>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div>
+                <div class="team-photo-box">
+                  <img
+                    src="./src/assets/images/dentist_kamran_clean_1795678353089.jpg"
+                    alt="Portrait of fictional dentist Dr. Kamran Qureshi wearing glasses, a white coat, and sage green scrubs"
+                    referrerpolicy="no-referrer"
+                    class="img-cover"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="img-fallback">Dr. Kamran Qureshi (Demo Portrait)</div>
+                </div>
+                <div class="team-body">
+                  <p class="team-kicker">Fictional Demo Profile · 12 Years Demo Experience</p>
+                  <h2 class="card-title" style="margin-bottom:0.125rem;">Dr. Kamran Qureshi</h2>
+                  <p class="team-role">Restorative &amp; Implant Dentist</p>
+                  <p class="team-qual">BDS, MDS (Fictional Demo Credentials)</p>
+                  <p class="card-text">
+                    Specializes in dental implants, root canal care, and long-lasting restorative treatments explained in plain, honest terms.
+                  </p>
+                </div>
+              </div>
+              <div class="team-footer">
+                <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="appointment">
+                  Request demo appointment
+                </button>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div>
+                <div class="team-photo-box">
+                  <img
+                    src="./src/assets/images/dentist_sana_1795678337568.jpg"
+                    alt="Portrait of fictional dentist Dr. Sana Tariq smiling in a white coat over light blue scrubs"
+                    referrerpolicy="no-referrer"
+                    class="img-cover"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="img-fallback">Dr. Sana Tariq (Demo Portrait)</div>
+                </div>
+                <div class="team-body">
+                  <p class="team-kicker">Fictional Demo Profile · 7 Years Demo Experience</p>
+                  <h2 class="card-title" style="margin-bottom:0.125rem;">Dr. Sana Tariq</h2>
+                  <p class="team-role">Orthodontist &amp; Cosmetic Care</p>
+                  <p class="team-qual">BDS, FCPS Ortho (Fictional Demo Credentials)</p>
+                  <p class="card-text">
+                    Provides braces treatment and gentle teeth whitening plans tailored to each patient’s comfort, schedule, and smile goals.
+                  </p>
+                </div>
+              </div>
+              <div class="team-footer">
+                <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="appointment">
+                  Request demo appointment
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 5: APPOINTMENT -->
+      <section id="page-appointment" class="page-view" aria-label="Appointment page">
+        <div class="page-band page-band-blue">
+          <div class="container">
+            <p class="eyebrow eyebrow-sky">Appointment · Interactive Demo Form</p>
+            <h1 class="page-title">Book a Demo Appointment</h1>
+            <p class="page-subtitle">
+              Test our sample appointment request form below. All actions happen locally in your browser for demonstration only.
+            </p>
+          </div>
+        </div>
+
+        <div class="container section-pad">
+          <div class="appointment-grid">
+            <div>
+              <div class="notice-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+                <div>
+                  <strong style="color:var(--text-slate-900);">Demo Form Only — Do Not Send Real Patient Data:</strong>
+                  Submitting this form displays a sample confirmation on your screen. No information is sent to a server, stored, or reviewed by a real clinic.
+                </div>
+              </div>
+
+              <!-- Confirmation Screen (Hidden until submit) -->
+              <div id="demo-confirmation" class="confirmation-box" role="status" aria-live="polite">
+                <div style="display:flex; align-items:flex-start; gap:0.75rem; margin-bottom:1rem;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                  <div>
+                    <h2 style="font-size:1.125rem; font-weight:600; color:var(--text-slate-900);">
+                      Demo Appointment Confirmation
+                    </h2>
+                    <p style="font-size:0.875rem; font-weight:500; color:var(--emerald-800); margin-top:0.125rem;">
+                      DEMO ONLY — NOT A REAL CLINIC BOOKING
+                    </p>
+                  </div>
+                </div>
+
+                <p class="card-text">
+                  Thank you for testing the Smile Care Dental Clinic demo form. No real appointment was scheduled and no personal information was collected or transmitted.
+                </p>
+
+                <dl class="summary-dl">
+                  <div class="summary-row">
+                    <dt class="summary-dt">Demo Patient Name</dt>
+                    <dd class="summary-dd" id="confirm-name"></dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt class="summary-dt">Selected Service</dt>
+                    <dd class="summary-dd" id="confirm-service"></dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt class="summary-dt">Preferred Date</dt>
+                    <dd class="summary-dd tabular-nums" id="confirm-date"></dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt class="summary-dt">Demo Email</dt>
+                    <dd class="summary-dd" id="confirm-email"></dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt class="summary-dt">Demo Phone</dt>
+                    <dd class="summary-dd tabular-nums" id="confirm-phone"></dd>
+                  </div>
+                </dl>
+
+                <button type="button" id="reset-demo-form" class="btn-primary">
+                  Submit Another Demo Request
+                </button>
+              </div>
+
+              <!-- Appointment Form -->
+              <form id="appointment-form" class="form-card form-stack" novalidate>
+                <div>
+                  <label for="patient-name" class="form-label">Patient Name (Demo)</label>
+                  <input
+                    id="patient-name"
+                    name="patientName"
+                    type="text"
+                    placeholder="e.g., Ali Hassan (Demo)"
+                    class="form-input"
+                  />
+                  <p id="error-name" class="field-error"></p>
+                </div>
+
+                <div class="form-row-2">
+                  <div>
+                    <label for="patient-email" class="form-label">Email Address (Demo)</label>
+                    <input
+                      id="patient-email"
+                      name="email"
+                      type="email"
+                      placeholder="demo@example.com"
+                      class="form-input"
+                    />
+                    <p id="error-email" class="field-error"></p>
+                  </div>
+
+                  <div>
+                    <label for="patient-phone" class="form-label">Phone Number (Demo)</label>
+                    <input
+                      id="patient-phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+92 300 5550199"
+                      class="form-input"
+                    />
+                    <p id="error-phone" class="field-error"></p>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div>
+                    <label for="preferred-date" class="form-label">Preferred Appointment Date</label>
+                    <input
+                      id="preferred-date"
+                      name="preferredDate"
+                      type="date"
+                      class="form-input tabular-nums"
+                    />
+                    <p id="error-date" class="field-error"></p>
+                  </div>
+
+                  <div>
+                    <label for="service-select" class="form-label">Service Selection</label>
+                    <select id="service-select" name="service" class="form-input">
+                      <option value="Teeth Cleaning">Teeth Cleaning</option>
+                      <option value="Teeth Whitening">Teeth Whitening</option>
+                      <option value="Dental Implants">Dental Implants</option>
+                      <option value="Braces Treatment">Braces Treatment</option>
+                      <option value="Root Canal Treatment">Root Canal Treatment</option>
+                      <option value="Dental Checkups">Dental Checkups</option>
+                    </select>
+                    <p id="error-service" class="field-error"></p>
+                  </div>
+                </div>
+
+                <div class="form-submit-row">
+                  <button type="submit" class="btn-primary btn-primary-lg">
+                    Submit Demo Request
+                  </button>
+                  <span style="font-size:0.75rem; color:var(--text-slate-500);">
+                    Demo preview only · No data is transmitted
+                  </span>
+                </div>
+              </form>
+            </div>
+
+            <aside class="hours-sidebar">
+              <h2 class="card-title" style="font-size:1rem;">Sample Clinic Hours (Demo)</h2>
+              <dl class="hours-list">
+                <div class="hours-item">
+                  <dt style="font-weight:500; color:var(--text-slate-800);">Monday – Thursday</dt>
+                  <dd class="tabular-nums" style="margin:0.125rem 0 0; color:var(--text-slate-600);">09:00 AM – 07:00 PM</dd>
+                </div>
+                <div class="hours-item">
+                  <dt style="font-weight:500; color:var(--text-slate-800);">Friday</dt>
+                  <dd class="tabular-nums" style="margin:0.125rem 0 0; color:var(--text-slate-600);">09:00 AM – 01:00 PM, 03:00 PM – 07:00 PM</dd>
+                </div>
+                <div class="hours-item">
+                  <dt style="font-weight:500; color:var(--text-slate-800);">Saturday</dt>
+                  <dd class="tabular-nums" style="margin:0.125rem 0 0; color:var(--text-slate-600);">10:00 AM – 04:00 PM</dd>
+                </div>
+                <div class="hours-item">
+                  <dt style="font-weight:500; color:var(--text-slate-800);">Sunday</dt>
+                  <dd style="margin:0.125rem 0 0; color:var(--text-slate-600);">Closed</dd>
+                </div>
+              </dl>
+              <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid rgba(167, 243, 208, 0.7);">
+                <button type="button" class="text-link-btn text-link-emerald" style="padding:0; font-size:0.875rem;" data-page-link="contact">
+                  View Contact Us page
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 6: CONTACT US -->
+      <section id="page-contact" class="page-view" aria-label="Contact Us page">
+        <div class="page-band page-band-blue">
+          <div class="container">
+            <p class="eyebrow eyebrow-sky">Contact Us · Fictional Demo Address &amp; Hours</p>
+            <h1 class="page-title">Visit or Contact Smile Care Dental Clinic</h1>
+            <p class="page-subtitle">
+              The street address, telephone number, email, and clinic schedule below are fictional sample details in Karachi, Pakistan for demonstration only.
+            </p>
+          </div>
+        </div>
+
+        <div class="container section-pad">
+          <div class="grid-2">
+            <div class="card" style="justify-content:flex-start; gap:1.5rem;">
+              <div>
+                <h2 class="card-title" style="margin-bottom:0.25rem;">Clinic Details (Fictional Demo)</h2>
+                <p style="font-size:0.75rem; color:var(--text-slate-500);">
+                  Not an operating clinic · Sample contact layout
+                </p>
+              </div>
+
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <div>
+                  <div style="font-weight:600; color:var(--text-slate-900); margin-bottom:0.125rem;">
+                    Fictional Karachi Address
+                  </div>
+                  <p style="color:var(--text-slate-600); line-height:1.55;">
+                    Demo Suite 14, Ground Floor, Al-Rehman Commercial Arcade<br />
+                    Block 5, Clifton, Karachi 75600, Pakistan
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <div>
+                  <div style="font-weight:600; color:var(--text-slate-900); margin-bottom:0.125rem;">
+                    Fictional Phone Number
+                  </div>
+                  <p class="tabular-nums" style="color:var(--text-slate-600);">
+                    +92 (021) 555-0148 (Demo Only)
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                <div>
+                  <div style="font-weight:600; color:var(--text-slate-900); margin-bottom:0.125rem;">
+                    Fictional Email
+                  </div>
+                  <p style="color:var(--text-slate-600); word-break:break-all;">
+                    demo.contact@smilecaredental.example
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div style="display:flex; align-items:center; gap:0.625rem; margin-bottom:0.25rem;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <h2 class="card-title" style="margin-bottom:0;">Sample Opening Hours</h2>
+                </div>
+                <p style="font-size:0.75rem; color:var(--text-slate-500); margin-bottom:1.25rem;">
+                  Demonstration clinic schedule · Clifton, Karachi
+                </p>
+
+                <dl style="margin:0;">
+                  <div class="hours-table-row">
+                    <dt style="font-weight:500; color:var(--text-slate-800);">Monday – Thursday</dt>
+                    <dd class="tabular-nums" style="margin:0; color:var(--text-slate-600);">09:00 AM – 07:00 PM</dd>
+                  </div>
+                  <div class="hours-table-row">
+                    <dt style="font-weight:500; color:var(--text-slate-800);">Friday</dt>
+                    <dd class="tabular-nums" style="margin:0; color:var(--text-slate-600);">09:00 AM – 01:00 PM, 03:00 PM – 07:00 PM</dd>
+                  </div>
+                  <div class="hours-table-row">
+                    <dt style="font-weight:500; color:var(--text-slate-800);">Saturday</dt>
+                    <dd class="tabular-nums" style="margin:0; color:var(--text-slate-600);">10:00 AM – 04:00 PM</dd>
+                  </div>
+                  <div class="hours-table-row">
+                    <dt style="font-weight:500; color:var(--text-slate-800);">Sunday</dt>
+                    <dd style="margin:0; color:var(--text-slate-500); font-weight:500;">Closed</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="card-footer" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.75rem;">
+                <span style="font-size:0.75rem; color:var(--text-slate-500);">
+                  Demo website only — do not visit this fictional address.
+                </span>
+                <button type="button" class="text-link-btn" style="padding:0; font-size:0.875rem;" data-page-link="appointment">
+                  Open Appointment Form
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Clean Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <p style="font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--text-slate-900);">
+              Smile Care Dental Clinic
+            </p>
+            <p style="font-size:0.875rem; color:var(--text-slate-600); margin-top:0.25rem;">
+              Your Smile, Our Priority. · DEMO WEBSITE — NOT A REAL CLINIC
+            </p>
+          </div>
+
+          <nav aria-label="Footer navigation" class="footer-nav">
+            <a href="#home" class="footer-link active" data-page-link="home">Home</a>
+            <a href="#about" class="footer-link" data-page-link="about">About Us</a>
+            <a href="#services" class="footer-link" data-page-link="services">Our Services</a>
+            <a href="#team" class="footer-link" data-page-link="team">Our Team</a>
+            <a href="#appointment" class="footer-link" data-page-link="appointment">Appointment</a>
+            <a href="#contact" class="footer-link" data-page-link="contact">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Smile Care Dental Clinic (Demo Website). All names, locations, and details are fictional.
+          </p>
+          <p>DEMO WEBSITE — NOT A REAL CLINIC</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var VALID_PAGES = ['home', 'about', 'services', 'team', 'appointment', 'contact'];
+        var pageViews = {};
+        VALID_PAGES.forEach(function (id) {
+          pageViews[id] = document.getElementById('page-' + id);
+        });
+
+        var navLinks = document.querySelectorAll('[data-page-link]');
+        var headerBookBtn = document.getElementById('header-book-btn');
+        var mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        var mobileNav = document.getElementById('mobile-navigation');
+        var iconMenuOpen = document.getElementById('icon-menu-open');
+        var iconMenuClose = document.getElementById('icon-menu-close');
+
+        var appointmentForm = document.getElementById('appointment-form');
+        var confirmationBox = document.getElementById('demo-confirmation');
+        var serviceSelect = document.getElementById('service-select');
+        var dateInput = document.getElementById('preferred-date');
+        var nameInput = document.getElementById('patient-name');
+        var emailInput = document.getElementById('patient-email');
+        var phoneInput = document.getElementById('patient-phone');
+        var resetBtn = document.getElementById('reset-demo-form');
+
+        if (dateInput) {
+          dateInput.min = new Date().toISOString().split('T')[0];
+        }
+
+        function setMobileMenu(open) {
+          if (!mobileNav || !mobileMenuToggle) return;
+          if (open) {
+            mobileNav.classList.add('open');
+            mobileMenuToggle.setAttribute('aria-expanded', 'true');
+            mobileMenuToggle.setAttribute('aria-label', 'Close navigation menu');
+            iconMenuOpen.style.display = 'none';
+            iconMenuClose.style.display = 'block';
+          } else {
+            mobileNav.classList.remove('open');
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+            iconMenuOpen.style.display = 'block';
+            iconMenuClose.style.display = 'none';
+          }
+        }
+
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener('click', function () {
+            var isOpen = mobileNav.classList.contains('open');
+            setMobileMenu(!isOpen);
+          });
+        }
+
+        function showPage(pageId, updateHash) {
+          var target = VALID_PAGES.indexOf(pageId) !== -1 ? pageId : 'home';
+
+          VALID_PAGES.forEach(function (id) {
+            if (pageViews[id]) {
+              if (id === target) {
+                pageViews[id].classList.add('active');
+              } else {
+                pageViews[id].classList.remove('active');
+              }
+            }
+          });
+
+          navLinks.forEach(function (el) {
+            var linkPage = el.getAttribute('data-page-link');
+            if (el.classList.contains('nav-link') || el.classList.contains('mobile-nav-link') || el.classList.contains('footer-link')) {
+              if (linkPage === target) {
+                el.classList.add('active');
+                el.setAttribute('aria-current', 'page');
+              } else {
+                el.classList.remove('active');
+                el.removeAttribute('aria-current');
+              }
+            }
+          });
+
+          if (headerBookBtn) {
+            if (target === 'appointment') {
+              headerBookBtn.classList.add('is-active-page');
+              headerBookBtn.setAttribute('aria-current', 'page');
+            } else {
+              headerBookBtn.classList.remove('is-active-page');
+              headerBookBtn.removeAttribute('aria-current');
+            }
+          }
+
+          if (updateHash && window.location.hash !== '#' + target) {
+            window.history.pushState(null, '', '#' + target);
+          }
+
+          setMobileMenu(false);
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        navLinks.forEach(function (el) {
+          el.addEventListener('click', function (event) {
+            event.preventDefault();
+            var targetPage = el.getAttribute('data-page-link');
+            showPage(targetPage, true);
+          });
+        });
+
+        var bookServiceButtons = document.querySelectorAll('[data-book-service]');
+        bookServiceButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var serviceName = btn.getAttribute('data-book-service');
+            if (serviceSelect && serviceName) {
+              serviceSelect.value = serviceName;
+            }
+            if (confirmationBox && appointmentForm) {
+              confirmationBox.classList.remove('visible');
+              appointmentForm.style.display = 'grid';
+            }
+            showPage('appointment', true);
+          });
+        });
+
+        window.addEventListener('hashchange', function () {
+          var hashPage = window.location.hash.replace('#', '');
+          showPage(hashPage || 'home', false);
+        });
+
+        function showError(elementId, message) {
+          var el = document.getElementById(elementId);
+          if (!el) return;
+          if (message) {
+            el.innerHTML =
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>' +
+              '<span>' + message + '</span>';
+            el.classList.add('visible');
+          } else {
+            el.textContent = '';
+            el.classList.remove('visible');
+          }
+        }
+
+        if (nameInput) nameInput.addEventListener('input', function () { showError('error-name', ''); });
+        if (emailInput) emailInput.addEventListener('input', function () { showError('error-email', ''); });
+        if (phoneInput) phoneInput.addEventListener('input', function () { showError('error-phone', ''); });
+        if (dateInput) dateInput.addEventListener('change', function () { showError('error-date', ''); });
+        if (serviceSelect) serviceSelect.addEventListener('change', function () { showError('error-service', ''); });
+
+        if (appointmentForm) {
+          appointmentForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var patientName = nameInput.value.trim();
+            var email = emailInput.value.trim();
+            var phone = phoneInput.value.trim();
+            var preferredDate = dateInput.value;
+            var service = serviceSelect.value;
+
+            var hasError = false;
+
+            if (!patientName || patientName.length < 2) {
+              showError('error-name', 'Please enter a demo patient name (at least 2 characters).');
+              hasError = true;
+            } else {
+              showError('error-name', '');
+            }
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailPattern.test(email)) {
+              showError('error-email', 'Please enter a valid demo email address (e.g., name@example.com).');
+              hasError = true;
+            } else {
+              showError('error-email', '');
+            }
+
+            var digitsOnly = phone.replace(/\D/g, '');
+            if (!phone || digitsOnly.length < 7) {
+              showError('error-phone', 'Please enter a valid demo phone number (at least 7 digits).');
+              hasError = true;
+            } else {
+              showError('error-phone', '');
+            }
+
+            if (!preferredDate) {
+              showError('error-date', 'Please select a preferred appointment date.');
+              hasError = true;
+            } else {
+              showError('error-date', '');
+            }
+
+            if (!service) {
+              showError('error-service', 'Please select a dental service.');
+              hasError = true;
+            } else {
+              showError('error-service', '');
+            }
+
+            if (hasError) return;
+
+            document.getElementById('confirm-name').textContent = patientName;
+            document.getElementById('confirm-service').textContent = service;
+            document.getElementById('confirm-date').textContent = preferredDate;
+            document.getElementById('confirm-email').textContent = email;
+            document.getElementById('confirm-phone').textContent = phone;
+
+            appointmentForm.style.display = 'none';
+            confirmationBox.classList.add('visible');
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            appointmentForm.reset();
+            showError('error-name', '');
+            showError('error-email', '');
+            showError('error-phone', '');
+            showError('error-date', '');
+            showError('error-service', '');
+            confirmationBox.classList.remove('visible');
+            appointmentForm.style.display = 'grid';
+          });
+        }
+
+        var initialHash = window.location.hash.replace('#', '');
+        showPage(initialHash || 'home', false);
+      })();
+    </script>
+  </body>
+</html>
